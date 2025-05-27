@@ -1,0 +1,711 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif; /* Example font, consider adding Google Font import */
+    background-color: #121212;
+    color: #e0e0e0;
+    line-height: 1.6;
+}
+
+/* Navigation Bar */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #1f1f1f; /* Slightly lighter than body for differentiation */
+    padding: 1rem 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+nav a {
+    color: #e0e0e0;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    margin: 0 0.5rem;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+nav a:hover {
+    color: #121212;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+}
+
+/* Sections */
+section {
+    padding: 6rem 2rem 2rem; /* Added top padding to account for fixed nav */
+    min-height: 80vh; /* Adjusted min-height for better spacing */
+    border-bottom: 1px solid #2a2a2a; /* Separator for sections */
+}
+
+section h1 {
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+    color: #f0f0f0; /* Slightly brighter for headings */
+}
+
+#hero {
+    position: relative; /* Needed for absolute positioning of canvas */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+    text-align: center;
+    background-color: #1a1a1a; /* Different background for hero if desired */
+    overflow: hidden; /* Ensures canvas doesn't unintentionally overflow if mis-sized */
+}
+
+#hero-canvas-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Behind hero content */
+    display: block; /* Remove any default canvas spacing */
+}
+
+#hero h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #f5f5f5; /* Brighter for hero title */
+    position: relative; /* Ensure text is above canvas */
+    z-index: 1;
+}
+
+#hero .tagline {
+    font-size: 1.5rem;
+    font-weight: 300;
+    max-width: 600px;
+    line-height: 1.6;
+    color: #c0c0c0; /* Slightly softer than main text */
+    position: relative; /* Ensure text is above canvas */
+    z-index: 1;
+}
+
+/* About Section */
+#about {
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+#about h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    color: #f0f0f0;
+}
+
+#about .photo-placeholder {
+    width: 180px; /* Slightly smaller placeholder */
+    height: 180px;
+    background-color: #333;
+    border-radius: 50%;
+    margin: 0 auto 2rem auto;
+    border: 3px solid #444; /* Added a subtle border */
+}
+
+#about .professional-summary {
+    font-size: 1.1rem;
+    line-height: 1.7; /* Increased for better readability */
+    max-width: 800px;
+    margin: 0 auto;
+    color: #c0c0c0; /* Consistent with tagline */
+}
+
+
+/* Basic Responsiveness */
+@media (max-width: 768px) {
+    nav {
+        padding: 0.8rem 0;
+    }
+    nav a {
+        padding: 0.4rem 0.8rem;
+        margin: 0 0.3rem;
+        font-size: 0.9rem;
+    }
+
+    section {
+        padding: 5rem 1rem 1rem;
+    }
+
+    section h1 {
+        font-size: 2rem;
+    }
+    #hero h1 {
+        font-size: 3rem;
+    }
+    #hero .tagline {
+        font-size: 1.25rem;
+    }
+    #about h2 {
+        font-size: 2rem;
+    }
+    #about .professional-summary {
+        font-size: 1rem;
+        padding: 0 1rem; /* Add padding for summary on smaller screens */
+    }
+    #about .photo-placeholder {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    nav {
+        flex-direction: column;
+        align-items: center;
+        padding: 0.5rem 0;
+    }
+    nav a {
+        padding: 0.5rem 1rem; /* Full width touch target */
+        margin: 0.2rem 0;
+        width: 80%;
+        text-align: center;
+    }
+    nav a:hover {
+        background-color: #333; /* Adjusted hover for stacked links */
+        color: #e0e0e0;
+    }
+
+    section h1 {
+        font-size: 1.8rem;
+    }
+    #hero h1 {
+        font-size: 2.5rem;
+    }
+    #hero .tagline {
+        font-size: 1.1rem;
+    }
+    #about h2 {
+        font-size: 1.8rem;
+    }
+    #about .professional-summary {
+        font-size: 0.95rem;
+    }
+    #about .photo-placeholder {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+/* Experience Section */
+#experience {
+    padding: 4rem 2rem;
+}
+
+#experience h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #f0f0f0;
+}
+
+.experience-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.experience-card {
+    background-color: #1f1f1f; /* Slightly lighter than section bg */
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 700px;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.25); /* Enhanced shadow slightly */
+    border: 1px solid #2a2a2a; /* Added a subtle border */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.experience-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+}
+
+.experience-card h3 {
+    font-size: 1.8rem;
+    font-weight: 600; /* Bolder for title */
+    margin-bottom: 0.5rem;
+    color: #e0e0e0;
+}
+
+.experience-card .company-date {
+    font-size: 1rem;
+    color: #a0a0a0; /* Muted color */
+    margin-bottom: 1.5rem; /* Increased spacing */
+}
+
+.experience-card ul {
+    list-style-position: outside; /* Changed to outside for better alignment */
+    padding-left: 1.2rem; /* Indent list items */
+    margin-bottom: 0;
+}
+
+.experience-card li {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 0.75rem; /* Spacing between items */
+    color: #c0c0c0;
+}
+
+/* Responsive adjustments for Experience section */
+@media (max-width: 768px) {
+    #experience h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    .experience-card {
+        padding: 1.5rem;
+    }
+    .experience-card h3 {
+        font-size: 1.6rem;
+    }
+    .experience-card .company-date {
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+    }
+    .experience-card li {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #experience {
+        padding: 3rem 1rem; /* Reduced padding for small screens */
+    }
+    #experience h2 {
+        font-size: 1.8rem;
+    }
+    .experience-card h3 {
+        font-size: 1.4rem;
+    }
+    .experience-card .company-date {
+        font-size: 0.9rem;
+    }
+    .experience-card li {
+        font-size: 0.9rem;
+    }
+}
+
+/* Projects Section */
+#projects {
+    padding: 4rem 2rem;
+}
+
+#projects h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #f0f0f0;
+}
+
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background-color: #1f1f1f; /* Consistent with experience cards */
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.25); /* Consistent shadow */
+    border: 1px solid #2a2a2a; /* Consistent border */
+    display: flex; /* Added for flex-direction column */
+    flex-direction: column; /* Ensures consistent height for description if text wraps differently */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+}
+
+.project-image-placeholder {
+    height: 200px;
+    background-color: #333;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    color: #777;
+    font-style: italic; /* Added to make "Image Placeholder" text more distinct */
+}
+
+.project-card h3 {
+    font-size: 1.6rem;
+    font-weight: 600; /* Changed from bold to 600 for consistency */
+    margin-bottom: 0.5rem;
+    color: #e0e0e0;
+}
+
+.project-card .project-client {
+    font-size: 0.9rem;
+    color: #bbb;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.project-card .project-description {
+    font-size: 1rem;
+    line-height: 1.6; /* Standardized line height */
+    margin-bottom: 1rem;
+    color: #c0c0c0;
+    flex-grow: 1; /* Allows description to take available space, helping align achievements */
+}
+
+.project-card .project-achievement {
+    font-size: 1rem;
+    line-height: 1.6; /* Standardized line height */
+    color: #4CAF50; /* Green highlight for achievement */
+    margin-top: auto; /* Pushes achievement to the bottom if cards have varying content height */
+}
+
+.project-card .project-achievement strong {
+    font-weight: 600; /* Standardized bold */
+    color: #5cb85c; /* Slightly lighter green for the "Achievement:" text itself */
+}
+
+
+/* Responsive adjustments for Projects section */
+@media (max-width: 768px) {
+    #projects h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    .project-card {
+        padding: 1.5rem;
+    }
+    .project-card h3 {
+        font-size: 1.4rem;
+    }
+    .project-card .project-description,
+    .project-card .project-achievement {
+        font-size: 0.95rem;
+    }
+    .project-image-placeholder {
+        height: 180px; /* Slightly reduce placeholder height */
+    }
+}
+
+@media (max-width: 480px) {
+    #projects {
+        padding: 3rem 1rem;
+    }
+    #projects h2 {
+        font-size: 1.8rem;
+    }
+    /* Grid will handle card width, further adjustments primarily for text */
+    .project-card h3 {
+        font-size: 1.3rem;
+    }
+    .project-card .project-client {
+        font-size: 0.85rem;
+    }
+    .project-card .project-description,
+    .project-card .project-achievement {
+        font-size: 0.9rem;
+    }
+    .project-image-placeholder {
+        height: 150px; /* Further reduce placeholder height */
+    }
+}
+
+/* Skills Section */
+#skills {
+    padding: 4rem 2rem;
+}
+
+#skills h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #f0f0f0;
+}
+
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem; /* Increased gap between categories */
+}
+
+.skill-category {
+    /* Optional: Add a border or background to each category if desired */
+    /* background-color: #1a1a1a; */
+    /* padding: 1.5rem; */
+    /* border-radius: 6px; */
+}
+
+#skills h3 { /* More specific selector for category titles */
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: #e0e0e0; /* Slightly less bright than main titles */
+    padding-bottom: 0.5rem; /* Space for potential border-bottom */
+    border-bottom: 1px solid #333; /* Subtle separator for category title */
+}
+
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem; /* Gap between tags */
+}
+
+.skill-tag {
+    background-color: #252525; /* Darker shade for tags */
+    color: #ddd;
+    padding: 0.6rem 1.2rem; /* Slightly more padding for a better look */
+    border-radius: 20px; /* Pill-shaped tags */
+    font-size: 0.9rem;
+    border: 1px solid #383838; /* Subtle border for definition */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
+}
+
+.skill-tag:hover {
+    background-color: #4CAF50; /* Accent color */
+    color: #ffffff; /* White text */
+    transform: scale(1.05); /* Slightly enlarge the tag */
+    border-color: #4CAF50; /* Match border to background or make it complementary */
+}
+
+.skill-tag.unique-skill {
+    border: 1px solid #4CAF50;
+    color: #4CAF50;
+    font-weight: 500; /* Changed from bold to 500 for a less heavy look */
+    background-color: #2a3a2a; /* Dark green tint */
+    /* Inherits base transition */
+}
+
+.skill-tag.unique-skill:hover {
+    background-color: #5cb85c; /* A slightly lighter or more vibrant shade of the accent */
+    border-color: #6fbf6f; /* Lighter border for unique skill hover */
+    color: #ffffff;
+    transform: scale(1.05); /* Consistent scale effect */
+}
+
+
+/* Responsive adjustments for Skills section */
+@media (max-width: 768px) {
+    #skills h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    #skills h3 {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+    }
+    .skill-tag {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+    .skills-container {
+        gap: 2rem; /* Reduce gap for tablet */
+    }
+}
+
+@media (max-width: 480px) {
+    #skills {
+        padding: 3rem 1rem;
+    }
+    #skills h2 {
+        font-size: 1.8rem;
+    }
+    #skills h3 {
+        font-size: 1.4rem;
+    }
+    .skill-tag {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+    .skills-container {
+        /* Grid will stack to single column due to minmax, no need for specific column change here */
+        gap: 1.5rem; /* Further reduce gap */
+    }
+}
+
+/* Contact & Footer Section */
+#contact {
+    padding: 4rem 2rem 0; /* Reduced bottom padding as footer will add its own */
+    border-bottom: none; /* Remove bottom border if it was applied to all sections */
+}
+
+#contact h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #f0f0f0;
+}
+
+.contact-details {
+    text-align: center;
+    font-size: 1.2rem; /* Increased font size */
+    line-height: 1.8;
+    margin-bottom: 3rem; /* Space before footer */
+}
+
+.contact-details p {
+    margin-bottom: 0.5rem; /* Spacing between contact items */
+}
+
+.contact-details a {
+    color: #4CAF50; /* Accent color for links */
+    text-decoration: none;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.contact-details a:hover,
+.contact-details a:focus { /* Added focus for accessibility */
+    color: #6fbf6f; /* Lighter green on hover/focus */
+    text-decoration: underline;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    margin-top: 3rem; /* This is margin from .contact-details now */
+    border-top: 1px solid #333; /* Subtle separator */
+    font-size: 0.9rem;
+    color: #aaa; /* Muted color */
+}
+
+/* Responsive adjustments for Contact & Footer section */
+@media (max-width: 768px) {
+    #contact {
+        padding: 3rem 2rem 0;
+    }
+    #contact h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    .contact-details {
+        font-size: 1.1rem; /* Adjusted font size */
+        line-height: 1.7;
+        margin-bottom: 2rem;
+    }
+    footer {
+        padding: 1.5rem 1rem;
+        margin-top: 2rem;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #contact {
+        padding: 2.5rem 1rem 0; /* Further reduced padding */
+    }
+    #contact h2 {
+        font-size: 1.8rem;
+    }
+    .contact-details {
+        font-size: 1rem; /* Further adjusted font size */
+        line-height: 1.6;
+    }
+    .contact-details p {
+        margin-bottom: 0.75rem; /* Slightly more space for tappability */
+    }
+    footer {
+        font-size: 0.8rem;
+    }
+}
+
+/* Scroll Reveal Animations */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(50px); /* Optional: slide-up effect */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Ensure sections still take up space before reveal to avoid layout shifts if possible */
+section:not(#hero).reveal-on-scroll { /* Targeting sections meant to be revealed */
+    /* min-height: 50vh; */ /* Already have min-heights set, this might be redundant or conflict */
+}
+
+/* Adjust hero if it also gets this class by mistake - though JS excludes it */
+#hero.reveal-on-scroll {
+  opacity: 1; /* Hero should always be visible */
+  transform: translateY(0);
+}
+
+/* Custom Cursor Styles */
+body {
+    cursor: none;
+}
+
+.custom-cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    background-color: #4CAF50; /* Accent color */
+    border-radius: 50%;
+    pointer-events: none; /* Allows clicks to pass through */
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.1s ease-in-out, height 0.1s ease-in-out; /* For hover effect */
+}
+
+.custom-cursor-outline {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 40px;
+    border: 2px solid #4CAF50; /* Accent color */
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.15s ease-out, opacity 0.2s ease-out; /* Smooth follow and hover */
+    opacity: 0.7;
+}
+
+body.cursor-hover .custom-cursor-dot {
+    width: 12px; /* Make dot slightly larger */
+    height: 12px;
+}
+
+body.cursor-hover .custom-cursor-outline {
+    transform: translate(-50%, -50%) scale(1.5); /* Make outline larger */
+    opacity: 0.4;
+}
+
+/* Hide custom cursor on very small screens if it becomes obstructive */
+@media (max-width: 768px) {
+    .custom-cursor-dot,
+    .custom-cursor-outline {
+        display: none;
+    }
+    /* Restore default cursor for small screens */
+    body {
+        cursor: auto;
+    }
+}
