@@ -90,8 +90,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.baseX = this.x;
                 this.baseY = this.y;
                 this.density = (Math.random() * 30) + 1;
-                this.color = '#333'; // Dark particles for dark theme
-                this.alpha = Math.random() * 0.5 + 0.2; // Random transparency
+                const particleColors = ['#FF6B6B', '#4ECDC4'];
+                this.color = particleColors[Math.floor(Math.random() * particleColors.length)];
+                this.alpha = Math.random() * 0.3 + 0.1; // More transparent particles
             }
 
             draw() {

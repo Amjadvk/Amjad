@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
 /* Basic Reset */
 * {
     margin: 0;
@@ -10,51 +12,90 @@ html {
 }
 
 body {
-    font-family: 'Open Sans', sans-serif; /* Example font, consider adding Google Font import */
-    background-color: #121212;
-    color: #e0e0e0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #F8F9FA; /* Light background */
+    color: #212529; /* Dark text */
     line-height: 1.6;
 }
+
+/* Global Link Styling */
+p {
+    margin-bottom: 1.1rem; /* Consistent paragraph spacing */
+}
+
+ul { /* Default UL styling */
+    margin-bottom: 1.1rem;
+    padding-left: 1.5rem; /* Default indent for lists not in cards */
+}
+
+li { /* Default LI styling */
+    margin-bottom: 0.6rem;
+}
+
+a {
+    color: #FF6B6B; /* Accent color for all links */
+    text-decoration: none;
+    transition: color 0.3s ease, background-color 0.3s ease, text-decoration-color 0.3s ease;
+}
+
+a:hover, a:focus {
+    color: #e05252; /* Darker shade of accent */
+    text-decoration: underline;
+    text-decoration-color: #e05252; /* Ensure underline matches text */
+}
+
 
 /* Navigation Bar */
 nav {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: #1f1f1f; /* Slightly lighter than body for differentiation */
+    background-color: #FFFFFF; /* White nav background */
     padding: 1rem 0;
     z-index: 1000;
     display: flex;
     justify-content: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Subtle shadow for light theme */
 }
 
 nav a {
-    color: #e0e0e0;
+    color: #212529; /* Dark link text */
     text-decoration: none;
     padding: 0.5rem 1rem;
     margin: 0 0.5rem;
     transition: color 0.3s ease, background-color 0.3s ease;
+    font-family: 'Poppins', sans-serif; /* Added for nav links */
 }
 
-nav a:hover {
-    color: #121212;
-    background-color: #e0e0e0;
-    border-radius: 4px;
+nav a:hover, nav a.active, nav a:focus { /* Assuming an 'active' class could be added via JS later */
+    color: #FF6B6B; /* Accent Color */
+    background-color: transparent; /* Or a very light accent tint like #ffe0e0 */
+    border-radius: 4px; /* Keep if you like the slight rounding on hover */
+    text-decoration: none; /* Override global underline for nav if desired */
+    padding: 0.75rem 1.25rem; /* Adjusted padding */
+    margin: 0 0.25rem; /* Adjusted margin */
 }
 
 /* Sections */
 section {
-    padding: 6rem 2rem 2rem; /* Added top padding to account for fixed nav */
-    min-height: 80vh; /* Adjusted min-height for better spacing */
-    border-bottom: 1px solid #2a2a2a; /* Separator for sections */
+    padding: 6rem 2rem; /* Adjusted padding */
+    min-height: auto; /* Let content define height, or set a more organic min-height if needed */
+    border-bottom: none; /* Removed bottom border */
 }
 
-section h1 {
+section h1, section h2, section h3 { /* General h1, h2, h3 */
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+}
+/* Specific overrides below will also need Poppins and font-weight */
+
+section h1 { /* This is a general h1, likely overridden by #hero h1 etc. */
     margin-bottom: 1rem;
     font-size: 2.5rem;
-    color: #f0f0f0; /* Slightly brighter for headings */
+    color: #212529; /* Dark color for general section titles */
+    /* font-family & font-weight inherited or set by above general rule */
 }
+
 
 #hero {
     position: relative; /* Needed for absolute positioning of canvas */
@@ -65,7 +106,7 @@ section h1 {
     min-height: 100vh;
     padding: 2rem;
     text-align: center;
-    background-color: #1a1a1a; /* Different background for hero if desired */
+    background-color: #FFFFFF; /* Hero background light */
     overflow: hidden; /* Ensures canvas doesn't unintentionally overflow if mis-sized */
 }
 
@@ -80,20 +121,23 @@ section h1 {
 }
 
 #hero h1 {
-    font-size: 4rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 4rem; /* Consider adjusting if too large for new feel */
     font-weight: 700;
     margin-bottom: 1rem;
-    color: #f5f5f5; /* Brighter for hero title */
+    color: #FF6B6B; /* Example Accent */
     position: relative; /* Ensure text is above canvas */
     z-index: 1;
+    letter-spacing: 0.02em; /* Slight letter spacing for impact */
 }
 
 #hero .tagline {
-    font-size: 1.5rem;
-    font-weight: 300;
-    max-width: 600px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.6rem; /* Slightly enlarged */
+    font-weight: 400; /* Regular weight for tagline */
+    max-width: 650px; /* Slightly wider */
     line-height: 1.6;
-    color: #c0c0c0; /* Slightly softer than main text */
+    color: #444; /* Slightly darker for better emphasis */
     position: relative; /* Ensure text is above canvas */
     z-index: 1;
 }
@@ -105,19 +149,20 @@ section h1 {
 }
 
 #about h2 {
+    font-family: 'Poppins', sans-serif;
     font-size: 2.5rem;
-    font-weight: 600;
-    margin-bottom: 2rem;
-    color: #f0f0f0;
+    font-weight: 700; 
+    margin-bottom: 3rem; /* Increased spacing */
+    color: #212529; /* Dark heading */
 }
 
 #about .photo-placeholder {
     width: 180px; /* Slightly smaller placeholder */
     height: 180px;
-    background-color: #333;
+    background-color: #E9ECEF; /* Light grey placeholder */
     border-radius: 50%;
     margin: 0 auto 2rem auto;
-    border: 3px solid #444; /* Added a subtle border */
+    border: 3px solid #CED4DA; /* Light border */
 }
 
 #about .professional-summary {
@@ -125,7 +170,7 @@ section h1 {
     line-height: 1.7; /* Increased for better readability */
     max-width: 800px;
     margin: 0 auto;
-    color: #c0c0c0; /* Consistent with tagline */
+    color: #343A40; /* Darker text for summary */
 }
 
 
@@ -179,8 +224,8 @@ section h1 {
         text-align: center;
     }
     nav a:hover {
-        background-color: #333; /* Adjusted hover for stacked links */
-        color: #e0e0e0;
+        background-color: #4CAF50; /* Accent color */
+        color: #FFFFFF; /* White text */
     }
 
     section h1 {
@@ -210,11 +255,12 @@ section h1 {
 }
 
 #experience h2 {
+    font-family: 'Poppins', sans-serif;
     font-size: 2.5rem;
-    font-weight: 600;
+    font-weight: 700; 
     text-align: center;
-    margin-bottom: 3rem;
-    color: #f0f0f0;
+    margin-bottom: 3rem; /* Consistent spacing */
+    color: #212529; /* Dark heading */
 }
 
 .experience-container {
@@ -225,45 +271,46 @@ section h1 {
 }
 
 .experience-card {
-    background-color: #1f1f1f; /* Slightly lighter than section bg */
-    padding: 2rem;
-    border-radius: 8px;
-    max-width: 700px;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 1rem 0; /* Adjust padding - less padding if no card bg */
+    max-width: 700px; /* Max-width might still be useful for readability */
     width: 100%;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.25); /* Enhanced shadow slightly */
-    border: 1px solid #2a2a2a; /* Added a subtle border */
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    transition: none; /* Remove previous card hover transition */
+    margin-bottom: 2.5rem; /* Added margin for separation */
 }
 
 .experience-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    transform: none; /* Remove previous hover transform */
+    box-shadow: none; /* Remove previous hover shadow */
 }
 
 .experience-card h3 {
-    font-size: 1.8rem;
-    font-weight: 600; /* Bolder for title */
-    margin-bottom: 0.5rem;
-    color: #e0e0e0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.7rem; /* Slightly increased */
+    font-weight: 700; 
+    margin-bottom: 0.25rem; 
+    color: #FF6B6B; /* Accent color */
 }
 
 .experience-card .company-date {
-    font-size: 1rem;
-    color: #a0a0a0; /* Muted color */
-    margin-bottom: 1.5rem; /* Increased spacing */
+    font-size: 0.9em; 
+    color: #777; 
+    margin-bottom: 0.75rem; /* Adjusted margin */
 }
 
 .experience-card ul {
-    list-style-position: outside; /* Changed to outside for better alignment */
-    padding-left: 1.2rem; /* Indent list items */
+    list-style-position: outside; 
+    padding-left: 1.5rem; /* Slightly more indent */
     margin-bottom: 0;
 }
 
 .experience-card li {
     font-size: 1rem;
-    line-height: 1.6;
-    margin-bottom: 0.75rem; /* Spacing between items */
-    color: #c0c0c0;
+    line-height: 1.7; /* Increased line height */
+    margin-bottom: 0.6rem; /* Adjusted spacing */
+    color: #495057; 
 }
 
 /* Responsive adjustments for Experience section */
@@ -311,11 +358,12 @@ section h1 {
 }
 
 #projects h2 {
+    font-family: 'Poppins', sans-serif;
     font-size: 2.5rem;
-    font-weight: 600;
+    font-weight: 700; 
     text-align: center;
-    margin-bottom: 3rem;
-    color: #f0f0f0;
+    margin-bottom: 3rem; /* Consistent spacing */
+    color: #212529; /* Dark heading */
 }
 
 .projects-container {
@@ -325,65 +373,67 @@ section h1 {
 }
 
 .project-card {
-    background-color: #1f1f1f; /* Consistent with experience cards */
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.25); /* Consistent shadow */
-    border: 1px solid #2a2a2a; /* Consistent border */
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 1rem 0; /* Adjust padding */
     display: flex; /* Added for flex-direction column */
-    flex-direction: column; /* Ensures consistent height for description if text wraps differently */
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    flex-direction: column; 
+    transition: none; /* Remove previous card hover transition */
+    /* If items stack (not in grid), uncomment: margin-bottom: 2.5rem; */
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    transform: none; /* Remove previous hover transform */
+    box-shadow: none; /* Remove previous hover shadow */
 }
 
 .project-image-placeholder {
-    height: 200px;
-    background-color: #333;
+    height: 180px; /* Adjusted height */
+    background-color: #f8f9fa; /* Very light grey */
+    border: 2px dashed #e0e0e0; /* Dashed border */
     margin-bottom: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 4px;
-    color: #777;
-    font-style: italic; /* Added to make "Image Placeholder" text more distinct */
+    border-radius: 6px; /* Slightly more rounded */
+    color: #aaa; /* Lighter text for placeholder */
+    font-style: italic; 
 }
 
 .project-card h3 {
-    font-size: 1.6rem;
-    font-weight: 600; /* Changed from bold to 600 for consistency */
-    margin-bottom: 0.5rem;
-    color: #e0e0e0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem; /* Adjusted size */
+    font-weight: 700;
+    margin-bottom: 0.25rem; 
+    color: #FF6B6B; /* Accent color */
 }
 
 .project-card .project-client {
     font-size: 0.9rem;
-    color: #bbb;
-    margin-bottom: 1rem;
+    color: #777; /* Consistent with company-date */
+    margin-bottom: 0.75rem; /* Consistent margin */
     font-style: italic;
 }
 
 .project-card .project-description {
     font-size: 1rem;
-    line-height: 1.6; /* Standardized line height */
+    line-height: 1.7; /* Increased line height */
     margin-bottom: 1rem;
-    color: #c0c0c0;
-    flex-grow: 1; /* Allows description to take available space, helping align achievements */
+    color: #495057; 
+    flex-grow: 1; 
 }
 
 .project-card .project-achievement {
     font-size: 1rem;
-    line-height: 1.6; /* Standardized line height */
-    color: #4CAF50; /* Green highlight for achievement */
-    margin-top: auto; /* Pushes achievement to the bottom if cards have varying content height */
+    line-height: 1.7; /* Increased line height */
+    color: #4ECDC4; /* New secondary accent */
+    margin-top: auto; 
 }
 
 .project-card .project-achievement strong {
-    font-weight: 600; /* Standardized bold */
-    color: #5cb85c; /* Slightly lighter green for the "Achievement:" text itself */
+    font-weight: 600; 
+    color: #3aa9a0; /* Slightly darker shade of secondary accent */
 }
 
 
@@ -437,11 +487,12 @@ section h1 {
 }
 
 #skills h2 {
+    font-family: 'Poppins', sans-serif;
     font-size: 2.5rem;
-    font-weight: 600;
+    font-weight: 700; 
     text-align: center;
-    margin-bottom: 3rem;
-    color: #f0f0f0;
+    margin-bottom: 3rem; /* Consistent spacing */
+    color: #212529; /* Dark heading */
 }
 
 .skills-container {
@@ -458,12 +509,13 @@ section h1 {
 }
 
 #skills h3 { /* More specific selector for category titles */
+    font-family: 'Poppins', sans-serif;
     font-size: 1.8rem;
-    font-weight: 600;
+    font-weight: 700; /* Updated weight */
     margin-bottom: 1.5rem;
-    color: #e0e0e0; /* Slightly less bright than main titles */
+    color: #343A40; /* Darker grey for category titles */
     padding-bottom: 0.5rem; /* Space for potential border-bottom */
-    border-bottom: 1px solid #333; /* Subtle separator for category title */
+    border-bottom: 1px solid #DEE2E6; /* Light border for separator */
 }
 
 .skills-list {
@@ -473,36 +525,54 @@ section h1 {
 }
 
 .skill-tag {
-    background-color: #252525; /* Darker shade for tags */
-    color: #ddd;
-    padding: 0.6rem 1.2rem; /* Slightly more padding for a better look */
-    border-radius: 20px; /* Pill-shaped tags */
+    background-color: #E9ECEF; /* Light grey background */
+    color: #333; /* Dark text */
+    padding: 0.6rem 1.2rem; 
+    border-radius: 20px; /* Pill-shaped, playful */
     font-size: 0.9rem;
-    border: 1px solid #383838; /* Subtle border for definition */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow */
+    border: 1px solid #DEE2E6; /* Light border */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); 
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
 }
 
 .skill-tag:hover {
-    background-color: #4CAF50; /* Accent color */
-    color: #ffffff; /* White text */
-    transform: scale(1.05); /* Slightly enlarge the tag */
-    border-color: #4CAF50; /* Match border to background or make it complementary */
+    background-color: #FF6B6B; /* New Accent color */
+    color: #fff; /* White text */
+    transform: scale(1.05); 
+    border-color: #FF6B6B; /* Match border to background */
+}
+
+.skill-tag:focus {
+    background-color: #FF6B6B;
+    color: #fff;
+    border-color: #FF6B6B;
+    outline: 2px solid #FF6B6B; 
+    outline-offset: 2px;
+    transform: scale(1.05); /* Keep consistent with hover */
 }
 
 .skill-tag.unique-skill {
-    border: 1px solid #4CAF50;
-    color: #4CAF50;
-    font-weight: 500; /* Changed from bold to 500 for a less heavy look */
-    background-color: #2a3a2a; /* Dark green tint */
+    border: 1px solid #4ECDC4; /* Secondary accent */
+    color: #4ECDC4; /* Secondary accent */
+    font-weight: 500; 
+    background-color: #e0f5f4; /* Light tint of secondary accent */
     /* Inherits base transition */
 }
 
 .skill-tag.unique-skill:hover {
-    background-color: #5cb85c; /* A slightly lighter or more vibrant shade of the accent */
-    border-color: #6fbf6f; /* Lighter border for unique skill hover */
+    background-color: #4ECDC4; /* Full secondary accent on hover */
     color: #ffffff;
-    transform: scale(1.05); /* Consistent scale effect */
+    border-color: #4ECDC4;
+    transform: scale(1.05); 
+}
+
+.skill-tag.unique-skill:focus {
+    background-color: #4ECDC4; /* Full secondary accent on focus */
+    color: #ffffff;
+    border-color: #4ECDC4;
+    outline: 2px solid #4ECDC4; 
+    outline-offset: 2px;
+    transform: scale(1.05); /* Keep consistent with hover */
 }
 
 
@@ -552,11 +622,12 @@ section h1 {
 }
 
 #contact h2 {
+    font-family: 'Poppins', sans-serif;
     font-size: 2.5rem;
-    font-weight: 600;
+    font-weight: 700; 
     text-align: center;
-    margin-bottom: 3rem;
-    color: #f0f0f0;
+    margin-bottom: 3rem; /* Consistent spacing */
+    color: #212529; /* Dark heading */
 }
 
 .contact-details {
@@ -571,24 +642,24 @@ section h1 {
 }
 
 .contact-details a {
-    color: #4CAF50; /* Accent color for links */
-    text-decoration: none;
-    transition: color 0.3s ease, text-decoration 0.3s ease;
+    color: #FF6B6B; /* Will inherit from global 'a' styling */
+    text-decoration: none; /* Will inherit */
+    /* transition will also inherit */
 }
 
 .contact-details a:hover,
-.contact-details a:focus { /* Added focus for accessibility */
-    color: #6fbf6f; /* Lighter green on hover/focus */
-    text-decoration: underline;
+.contact-details a:focus { /* Will inherit from global 'a:hover, a:focus' */
+    color: #e05252; 
+    text-decoration: underline; /* Will inherit */
 }
 
 footer {
     text-align: center;
     padding: 2rem 1rem;
-    margin-top: 3rem; /* This is margin from .contact-details now */
-    border-top: 1px solid #333; /* Subtle separator */
+    margin-top: 3rem; 
+    border-top: 1px solid #e9ecef; /* Lighter border */
     font-size: 0.9rem;
-    color: #aaa; /* Muted color */
+    color: #999; /* Muted grey text */
 }
 
 /* Responsive adjustments for Contact & Footer section */
@@ -665,7 +736,7 @@ body {
     left: 0;
     width: 8px;
     height: 8px;
-    background-color: #4CAF50; /* Accent color */
+    background-color: #FF6B6B; /* Accent color for dot */
     border-radius: 50%;
     pointer-events: none; /* Allows clicks to pass through */
     z-index: 9999;
@@ -679,7 +750,7 @@ body {
     left: 0;
     width: 40px;
     height: 40px;
-    border: 2px solid #4CAF50; /* Accent color */
+    border: 2px solid #FF6B6B; /* Accent color for outline */
     border-radius: 50%;
     pointer-events: none;
     z-index: 9998;
